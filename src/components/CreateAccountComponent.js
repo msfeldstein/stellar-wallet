@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import server from './stellar'
-import Request from 'request'
-window.server = server
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {generateAccount} from '../actions'
 
-window.server = server
 class CreateAccountComponent extends Component {
   constructor() {
     super()
@@ -11,28 +9,23 @@ class CreateAccountComponent extends Component {
   }
 
   create() {
-    var pair = window.StellarSdk.Keypair.random();
-    console.log(pair)
-    window.pair = pair
-    server.friendbot(pair.publicKey())
-    // .then(resp => console.log(resp))
-    // .catch(e => console.error(e))
-    this.setState({pair})
+    this.props.generateAccount()
   }
 
   keyDetails() {
-    if (!this.state.pair) return null
+    const pair = this.props.keyPair
+    if (!pair) return null
     const pairJson = JSON.stringify({
-      publicKey: this.state.pair.publicKey(),
-      secret: this.state.pair.secret()
+      publicKey: pair.publicKey(),
+      secret: pair.secret()
     }, null, 2)
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(pairJson);
     return (
       <div>
         <h2>Public Key</h2>
-        {this.state.pair.publicKey()}
+        {pair.publicKey()}
         <h2>Private Key</h2>
-        {this.state.pair.secret()}
+        {pair.secret()}
         <br />
         <a href={dataStr} download="stellar.json"><button>Download</button></a>
       </div>
@@ -50,4 +43,18 @@ class CreateAccountComponent extends Component {
   }
 }
 
-export default CreateAccountComponent;
+let mapStateToProps = state => {
+  return {
+    keyPair: state.accountState.keyPair
+  }
+}
+
+let mapDispatchToProps = dispatch => {
+  return {
+    generateAccount: _ => {
+      dispatch(generateAccount())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountComponent);

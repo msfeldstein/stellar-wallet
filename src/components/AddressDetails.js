@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import server from './stellar'
+import server from '../stellar'
 import Spinner from 'react-spinkit'
 import AddressBalances from './AddressBalances'
 import QRCodeComponent from './QRCodeComponent'
@@ -24,18 +24,6 @@ class AddressDetails extends Component {
         loading: false,
         success: false
       }))
-    // fetch(`http://ec2-54-219-166-165.us-west-1.compute.amazonaws.com:8000/accounts/${this.props.address}`)
-    // .then(response => response.json())
-    // .then(json => {
-    //   this.setState({
-    //     loading: false,
-    //     balances: json.balances
-    //   })
-    //   console.log(json)
-    // })
-    // .catch(e => {
-    //   console.log("Something went wrong", e)
-    // })
   }
   render() {
     if (this.state.loading) {

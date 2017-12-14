@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './header.css'
 
 import { Link } from 'react-router-dom'
+import AccountLockStatus from './AccountLockStatus'
 
 class Header extends Component {
   render() {
     return (
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to Stellar4babies.com</h1>
+        <h1 className="App-title">Welcome to My Stellar Wallet</h1>
         <div className="sections">
           <div className="section">
             <Link to="/create-account">Create Account</Link>
@@ -21,6 +20,7 @@ class Header extends Component {
             <Link to="/query">Query</Link>
           </div>
         </div>
+        <AccountLockStatus />
       </header>
     );
   }
