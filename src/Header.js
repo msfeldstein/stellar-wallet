@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import AddressForm from './AddressForm'
-import AddressDetails from './AddressDetails'
-import TransactionDetails from './TransactionDetails'
 import logo from './logo.svg';
 import './header.css'
 
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   render() {
@@ -14,13 +12,13 @@ class Header extends Component {
         <h1 className="App-title">Welcome to Stellar4babies.com</h1>
         <div className="sections">
           <div className="section">
-            Create Account
+            <Link to="/create-account">Create Account</Link>
           </div>
           <div className="section">
-            Create Transaction
+            <Link to="/create-transaction">Create Transaction</Link>
           </div>
           <div className="section">
-            Query
+            <Link to="/query">Query</Link>
           </div>
         </div>
       </header>

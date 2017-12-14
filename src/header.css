@@ -6,8 +6,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  box-sizing: padding-box;
   color: white;
 }
 
@@ -26,9 +25,17 @@
 
 .sections {
   display: flex;
+  background: #333;
+  margin: 0;
+  padding: 10px;
   flex-direction: row;
 }
 
 .sections .section {
   flex-grow: 1;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }

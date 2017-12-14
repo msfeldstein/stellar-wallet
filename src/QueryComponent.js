@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import Header from './Header'
 import AddressForm from './AddressForm'
 import AddressDetails from './AddressDetails'
 import TransactionDetails from './TransactionDetails'
-import logo from './logo.svg';
-import './App.css';
 
 class QueryComponent extends Component {
   constructor() {

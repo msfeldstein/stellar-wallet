@@ -6,7 +6,7 @@
     "react-scripts": "1.0.17"
   },
   "dependencies": {
-    "halogen": "^0.2.0",
+    "babel-runtime": "^6.26.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-number-format": "^3.1.1",
@@ -14,7 +14,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "react-spinkit": "^3.0.0"
+    "react-spinkit": "^3.0.0",
+    "stellar-sdk": "^0.7.7"
   },
   "scripts": {
     "start": "react-scripts start",
