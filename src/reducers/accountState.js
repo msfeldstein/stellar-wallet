@@ -6,7 +6,7 @@ const accountState = (state = { status: 'unloaded' }, action) => {
 		case GENERATE_ACCOUNT:
 			var pair = window.StellarSdk.Keypair.random();
 		    window.pair = pair
-		    server.friendbot(pair.publicKey())
+		    server.friendbot(pair.publicKey()).call()
 		    console.log("GENERATED")
 			return {
 				status: 'unlocked',

@@ -17,7 +17,7 @@ class AccountLockStatus extends Component {
       link = <Link to={`/query/address/${this.props.address}`}>Details</Link>
   	}
     return (
-      <div className="AccountLockedStatus {statusClassName}">
+      <div className={`AccountLockedStatus ${statusClassName}`}>
         {message}
         {link}
       </div>
@@ -26,7 +26,6 @@ class AccountLockStatus extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE", state)
 	return {
 		status: state.accountState.status,
     address: state.accountState.publicKey

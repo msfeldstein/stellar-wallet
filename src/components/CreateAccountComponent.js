@@ -35,8 +35,8 @@ class CreateAccountComponent extends Component {
   render() {
     return (
       <div>
-        <h2>Create a new account</h2>
-        <button onClick={this.create.bind(this)}>Create a random account <span role="img" aria-label="dice">🎲</span></button>
+        <h2>Create a fresh account</h2>
+        <button onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
         {this.keyDetails()}
       </div>
     );

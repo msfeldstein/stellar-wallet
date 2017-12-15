@@ -13,7 +13,7 @@ class AddressDetails extends Component {
   }
   componentDidMount() {
     server.accounts()
-      .accountId(this.props.address)
+      .accountId(this.props.match.params.address)
       .call()
       .then(result => this.setState({
         loading: false,
@@ -26,6 +26,7 @@ class AddressDetails extends Component {
       }))
   }
   render() {
+    console.log("DETAILS", this.state)
     if (this.state.loading) {
       return (
         <div className="AddressDetails">
@@ -44,10 +45,10 @@ class AddressDetails extends Component {
 
     return (
       <div className="AddressDetails">
-        Details for address {this.props.address}
+        Details for address {this.props.match.params.address}
         <h3>Balances</h3>
         <AddressBalances balances={this.state.balances} />
-        <QRCodeComponent data={this.props.address} />
+        <QRCodeComponent data={this.props.match.params.address} />
       </div>
     );
   }

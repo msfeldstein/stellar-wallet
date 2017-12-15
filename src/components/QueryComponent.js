@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddressForm from './AddressForm'
 import AddressDetails from './AddressDetails'
 import TransactionDetails from './TransactionDetails'
+import {Route} from 'react-router'
 
 class QueryComponent extends Component {
   constructor() {
@@ -24,20 +25,11 @@ class QueryComponent extends Component {
     }
   }
   render() {
-    const addressDetails = this.state.address ?
-      <AddressDetails address={this.state.address} />
-      : null
-
-    const transactionDetails = this.state.transaction ?
-      <TransactionDetails transaction={this.state.transaction} />
-      : null
-
-    const details = addressDetails || transactionDetails
-
     return (
       <div>
         <AddressForm addressLookup={this.addressLookup.bind(this)} />
-        {details}
+        <Route path="/query/address/:address" component={AddressDetails} />
+        <Route path="/query/tx/:transaction" component={TransactionDetails} />
       </div>
     );
   }
