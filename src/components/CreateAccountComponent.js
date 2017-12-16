@@ -29,7 +29,6 @@ class CreateAccountComponent extends Component {
       } catch (e) {
         alert("Something was wrong with your keyfile")
       }
-      
     }
     reader.readAsText(file)
   }
@@ -65,6 +64,7 @@ class CreateAccountComponent extends Component {
   render() {
     return (
       <div className="AccountManagement">
+        <h2>Manage your account</h2>
         <button onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
         <button onClick={this.load.bind(this)}>Load an account <span role="img" aria-label="disk">💾</span></button>
         {this.keyDetails()}

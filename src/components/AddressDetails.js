@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import server from '../stellar'
 import Spinner from 'react-spinkit'
 import AddressBalances from './AddressBalances'
-import QRCodeComponent from './QRCodeComponent'
 import AddressDisplay from './AddressDisplay'
 
 class AddressDetails extends Component {

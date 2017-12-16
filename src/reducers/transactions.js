@@ -1,29 +1,26 @@
-import { UPDATE_ACCOUNT_INFO, LOAD_ACCOUNT, CLEAR_ACCOUNT} from '../actionTypes'
+import { TRANSACTION_BEGIN, TRANSACTION_FINISH, TRANSACTION_FAIL, TRANSACTION_CHANGED } from '../actionTypes'
 import update from 'immutability-helper';
 
 const accountState = (state = {
-	status: 'unloaded',
-	address: null,
-	data: {} }, action) =>
+	status: TRANSACTION_CHANGED,
+}, action) =>
 {
 	switch (action.type) {
-		case LOAD_ACCOUNT:
-			const status = action.pair ? 'unlocked' : 'loaded'
+		case TRANSACTION_BEGIN:
 			return update(state, {
-				pair: {$set: action.pair},
-				status: {$set: status},
-				address: {$set: action.publicKey || action.pair.publicKey()},
-				data: {$set: {}}
+				status: {$set: TRANSACTION_BEGIN}
 			})
-		case CLEAR_ACCOUNT:
+		case TRANSACTION_FINISH:
 			return update(state, {
-				status: {$set: 'unloaded'},
-				address: null,
-				data: {$set: {}}
+				status: {$set: TRANSACTION_FINISH}
 			})
-		case UPDATE_ACCOUNT_INFO:
+		case TRANSACTION_FAIL:
 			return update(state, {
-				data: {$set: action.data}
+				status: {$set: TRANSACTION_FAIL}
+			})
+		case TRANSACTION_CHANGED:
+			return update(state, {
+				status: {$set: TRANSACTION_CHANGED}
 			})
 		default:
 			return state

@@ -27,6 +27,7 @@ class QueryComponent extends Component {
   render() {
     return (
       <div>
+        <h2>Explore the Stellar network</h2>
         <AddressForm addressLookup={this.addressLookup.bind(this)} />
         <Route path="/query/address/:address" component={AddressDetails} />
         <Route path="/query/tx/:transaction" component={TransactionDetails} />

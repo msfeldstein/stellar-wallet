@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import AccountHeaderDetails from './AccountHeaderDetails'
-import Clipboard from '../svg/si-glyph-document-copy.svg'
-import Chain from '../svg/si-glyph-link-1.svg'
 
 import SVG from 'react-inlinesvg'
 class AccountLockStatus extends Component {
@@ -20,7 +18,7 @@ class AccountLockStatus extends Component {
     })
   }
   render() {
-  	let message = 'No Account Loaded'
+  	let message = 'No Account Loaded 😴'
 
   	let statusClassName = ''
   	if (this.props.status === 'loaded') {
@@ -33,10 +31,8 @@ class AccountLockStatus extends Component {
   		message = (
         <span>
           Account 
-          <span onClick={this.expand.bind(this)}> ...</span>{link}
-          <SVG src={Clipboard} className="inline-icon" />
-          <SVG src={Chain} className="inline-icon" />
-          loaded and unlocked!</span>
+          <span><span onClick={this.expand.bind(this)}> ...</span>{link}</span>
+           loaded and unlocked 😀</span>
       )
   		statusClassName = 'unlocked'
   	}

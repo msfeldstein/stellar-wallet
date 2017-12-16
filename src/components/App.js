@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header'
 import Main from './Main'
 import './style/App.css';
+import KeyFileDropper from './KeyFileDropper'
 
 class App extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Main />
+        <KeyFileDropper />
       </div>
     );
   }

@@ -1,15 +1,16 @@
 @import './colors.scss';
 
 .App-header {
-  background-color: $SALMON;
+  background-color: $STELLARDARKBLUE;
   box-sizing: padding-box;
   color: white;
 }
 
-.App-title {
-  font-size: 2em;
-  padding: 24px !important;
+.MainLogo {
+  width: 128px;
+  height: 128px;
 }
+
 
 .App-intro {
   font-size: large;
