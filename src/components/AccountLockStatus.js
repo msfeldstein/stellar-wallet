@@ -31,8 +31,8 @@ class AccountLockStatus extends Component {
   		message = (
         <span>
           Account 
-          <span><span onClick={this.expand.bind(this)}> ...</span>{link}</span>
-           loaded and unlocked 😀</span>
+          <span><span onClick={this.expand.bind(this)}> ...</span>{link} </span>
+           loaded and unlocked</span>
       )
   		statusClassName = 'unlocked'
   	}
