@@ -1,26 +1,31 @@
-import { GENERATE_ACCOUNT, LOAD_ACCOUNT, CLEAR_ACCOUNT} from '../actionTypes'
-import server from '../stellar'
-console.log("SERVER", server)
-const accountState = (state = { status: 'unloaded' }, action) => {
-	switch (action.type) {
-		case GENERATE_ACCOUNT:
-			var pair = window.StellarSdk.Keypair.random();
-		    window.pair = pair
-		    server.friendbot(pair.publicKey()).call()
-		    console.log("GENERATED")
-			return {
-				status: 'unlocked',
-				keyPair: pair,
-				publicKey: pair.publicKey()
-			}
-		case LOAD_ACCOUNT:
-			return {
-				status: 'loaded',
-				publicKey: action.publicKey
+import { UPDATE_ACCOUNT_INFO, LOAD_ACCOUNT, CLEAR_ACCOUNT} from '../actionTypes'
+import update from 'immutability-helper';
 
-			}
+const accountState = (state = {
+	status: 'unloaded',
+	address: null,
+	data: {} }, action) =>
+{
+	console.log("ACTION", action)
+	switch (action.type) {
+		case LOAD_ACCOUNT:
+			const status = action.pair ? 'unlocked' : 'loaded'
+			return update(state, {
+				pair: {$set: action.pair},
+				status: {$set: status},
+				address: {$set: action.publicKey || action.pair.publicKey()},
+				data: {$set: {}}
+			})
 		case CLEAR_ACCOUNT:
-			return { status: 'unloaded' }
+			return update(state, {
+				status: {$set: 'unloaded'},
+				address: null,
+				data: {$set: {}}
+			})
+		case UPDATE_ACCOUNT_INFO:
+			return update(state, {
+				data: {$set: action.data}
+			})
 		default:
 			return state
 	}

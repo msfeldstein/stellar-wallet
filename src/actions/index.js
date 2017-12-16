@@ -1,5 +1,8 @@
-import generateAccount from './generateAccount'
-
+import { generateAccount, setKeypair, refreshAccount } from './generateAccount'
+import sendPayment from './sendPayment'
 export {
-	generateAccount
+	generateAccount,
+	setKeypair,
+	refreshAccount,
+	sendPayment
 }

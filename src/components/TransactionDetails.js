@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from 'react-spinkit'
 import PaymentDetails from './PaymentDetails'
-import './transaction.css'
+import './style/transaction.css'
 
 class TransactionDetails extends Component {
   constructor() {

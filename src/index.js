@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'; 
-import { createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers'
+import ReduxThunk from 'redux-thunk'
 
-const store = createStore(reducers)
+const store = createStore(reducers, composeWithDevTools(
+	applyMiddleware(ReduxThunk))
+)
 
 ReactDOM.render(
 	<BrowserRouter>
@@ -16,4 +19,3 @@ ReactDOM.render(
 			<App />
 		</Provider>
 	</BrowserRouter>, document.getElementById('root'));
-// registerServiceWorker();

@@ -1,0 +1,58 @@
+@import './colors.scss';
+
+.App-header {
+  background-color: $SALMON;
+  box-sizing: padding-box;
+  color: white;
+}
+
+.App-title {
+  font-size: 2em;
+  padding: 24px !important;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sections {
+  display: flex;
+  background: #333;
+  margin: 0;
+  flex-direction: row;
+}
+
+.sections .section {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.sections .section a {
+  width: 100%;
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 16px;
+}
+
+.sections .section:hover {
+  background: #444;
+}
+
+.App-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.AccountLockedStatus.unlocked {
+  background: $TEAL;
+  text-align: left;
+}
+
+.AccountLockedStatus {
+  padding: 16px;
+}

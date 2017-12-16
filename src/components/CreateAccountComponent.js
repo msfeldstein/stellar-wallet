@@ -1,15 +1,45 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {generateAccount} from '../actions'
+import {generateAccount, setKeypair, refreshAccount } from '../actions'
+import AddressDisplay from './AddressDisplay'
+import { StellarSdk } from '../stellar'
+
+import './style/account.css'
+
 
 class CreateAccountComponent extends Component {
   constructor() {
     super()
     this.state = {}
+    this.fileInput = document.createElement('input')
+    this.fileInput.type = 'file'
+    this.fileInput.onchange = this.fileChanged.bind(this)
+  }
+
+  fileChanged(e) {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.onload = (file) => {
+      try {
+        const json = JSON.parse(reader.result)
+        if (!json.publicKey || !json.secret) throw new Error("Bad JSON Values")
+        const pair = StellarSdk.Keypair.fromSecret(json.secret)
+        this.props.setKeypair(pair)
+        this.props.refreshAccount(pair.publicKey())
+      } catch (e) {
+        alert("Something was wrong with your keyfile")
+      }
+      
+    }
+    reader.readAsText(file)
   }
 
   create() {
     this.props.generateAccount()
+  }
+
+  load() {
+    this.fileInput.click()
   }
 
   keyDetails() {
@@ -22,10 +52,10 @@ class CreateAccountComponent extends Component {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(pairJson);
     return (
       <div>
-        <h2>Public Key</h2>
-        {pair.publicKey()}
-        <h2>Private Key</h2>
-        {pair.secret()}
+        <div className="AddressDisplayRow">
+          <AddressDisplay address={pair.publicKey()} title="Public Key" />
+          <AddressDisplay address={pair.secret()} isPrivate={true} title="Private Key" />
+        </div>
         <br />
         <a href={dataStr} download="stellar.json"><button>Download</button></a>
       </div>
@@ -34,9 +64,9 @@ class CreateAccountComponent extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Create a fresh account</h2>
+      <div className="AccountManagement">
         <button onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
+        <button onClick={this.load.bind(this)}>Load an account <span role="img" aria-label="disk">💾</span></button>
         {this.keyDetails()}
       </div>
     );
@@ -45,7 +75,7 @@ class CreateAccountComponent extends Component {
 
 let mapStateToProps = state => {
   return {
-    keyPair: state.accountState.keyPair
+    keyPair: state.accountState.pair
   }
 }
 
@@ -53,6 +83,12 @@ let mapDispatchToProps = dispatch => {
   return {
     generateAccount: _ => {
       dispatch(generateAccount())
+    },
+    refreshAccount: address => {
+      dispatch(refreshAccount(address))
+    },
+    setKeypair: pair => {
+      dispatch(setKeypair(pair))
     }
   }
 }

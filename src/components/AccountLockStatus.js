@@ -1,34 +1,66 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import AccountHeaderDetails from './AccountHeaderDetails'
+import Clipboard from '../svg/si-glyph-document-copy.svg'
+import Chain from '../svg/si-glyph-link-1.svg'
 
+import SVG from 'react-inlinesvg'
 class AccountLockStatus extends Component {
+  constructor() {
+    super()
+    this.state = {
+      expand: false
+    }
+  }
+
+  expand() {
+    this.setState({
+      expand: true
+    })
+  }
   render() {
   	let message = 'No Account Loaded'
+
   	let statusClassName = ''
-    let link = null
   	if (this.props.status === 'loaded') {
   		message = 'Account loaded but locked'
   		statusClassName = 'locked'
   	}
   	if (this.props.status === 'unlocked') {
-  		message = 'Account loaded and unlocked!'
+      const shortname = this.state.expand ? this.props.address : this.props.address.substring(50, 56)
+      const link = <Link to={`/query/address/${this.props.address}`}>{shortname}</Link>
+  		message = (
+        <span>
+          Account 
+          <span onClick={this.expand.bind(this)}> ...</span>{link}
+          <SVG src={Clipboard} className="inline-icon" />
+          <SVG src={Chain} className="inline-icon" />
+          loaded and unlocked!</span>
+      )
   		statusClassName = 'unlocked'
-      link = <Link to={`/query/address/${this.props.address}`}>Details</Link>
   	}
+
     return (
       <div className={`AccountLockedStatus ${statusClassName}`}>
         {message}
-        {link}
+        <AccountHeaderDetails />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-	return {
-		status: state.accountState.status,
-    address: state.accountState.publicKey
-	}
+  const account = state.accountState
+  let balance = null
+  if (account.data.balances) {
+    let xlmBalance = account.data.balances.find(b => b.asset_type === 'native')
+    balance = xlmBalance ? xlmBalance.balance : null
+  }
+  return {
+    status: account.status,
+    address: account.address,
+    balance: balance
+  }
 }
 export default connect(mapStateToProps, null)(AccountLockStatus)

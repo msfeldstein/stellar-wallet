@@ -3,6 +3,7 @@ import server from '../stellar'
 import Spinner from 'react-spinkit'
 import AddressBalances from './AddressBalances'
 import QRCodeComponent from './QRCodeComponent'
+import AddressDisplay from './AddressDisplay'
 
 class AddressDetails extends Component {
   constructor() {
@@ -26,7 +27,6 @@ class AddressDetails extends Component {
       }))
   }
   render() {
-    console.log("DETAILS", this.state)
     if (this.state.loading) {
       return (
         <div className="AddressDetails">
@@ -43,12 +43,16 @@ class AddressDetails extends Component {
       )
     }
 
+    const addressCardStyles = {
+        float: 'left'
+      }
+
     return (
       <div className="AddressDetails">
-        Details for address {this.props.match.params.address}
-        <h3>Balances</h3>
+        <div style={addressCardStyles}>
+          <AddressDisplay address={this.props.match.params.address} title="Address" />
+        </div>
         <AddressBalances balances={this.state.balances} />
-        <QRCodeComponent data={this.props.match.params.address} />
       </div>
     );
   }

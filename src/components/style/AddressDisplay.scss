@@ -1,0 +1,55 @@
+.AddressDisplayRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.AddressDisplay {
+	background: white;
+	width: 220px;
+	height: 280px;
+	padding: 16px;
+	font-family: monospace;
+	background: repeating-linear-gradient(
+		45deg,
+		#8ED2C9,
+		#8ED2C9 3px,
+		#00AAA0 6px,
+		#00AAA0 6px
+	);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 16px;
+}
+
+.AddressDisplay.isPrivate {
+	background: repeating-linear-gradient(
+		45deg,
+		#FF7A5A,
+		#FF7A5A 3px,
+		#751700 6px,
+		#751700 6px
+	);
+}
+
+.AddressDisplay > * {
+	margin: 12px;
+}
+
+.AddressDisplayAddress {
+	background: white;
+	word-wrap: break-word;
+	width: 100%;
+}
+
+.AddressDisplayTitle {
+	font-size: 2em;
+}
+
+.PrivateKeyWarning {
+	background: white;
+	padding: 16px;
+	margin-bottom: 16px;
+}

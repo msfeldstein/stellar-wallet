@@ -13,8 +13,14 @@ class AddressBalances extends Component {
           decimalScale={3} />
       </div>
     })
+
+    const wrapperStyles = {
+      textAlign: 'left',
+      padding: 16
+    }
     return (
-      <div className="AddressBalances">
+      <div className="AddressBalances" style={wrapperStyles}>
+        <h3>Balances</h3>
         {balances}
       </div>
     );
