@@ -24,12 +24,13 @@ export function setKeypair(pair) {
 			type: LOAD_ACCOUNT,
 			pair
 		})
+		console.log("Subscribing for account ", pair.publicKey())
 		server.transactions()
 	    .forAccount(pair.publicKey())
 		  .cursor('now')
 		  .stream({
 		    onmessage: function (message) {
-		      console.log(message);
+		      console.log("Subscription Message", message);
 		      dispatch(refreshAccount(pair.publicKey()))
 		    }
 		  })	
@@ -45,7 +46,19 @@ export function generateAccount() {
 		const friendbot = () => {
 			server.friendbot(pair.publicKey())
 				.call()
-				.then(_ => dispatch(refreshAccount(pair.publicKey())))
+				.then(_ => {
+					dispatch(refreshAccount(pair.publicKey()))
+					console.log("Subscribing for account ", pair.publicKey())
+					server.transactions()
+				    .forAccount(pair.publicKey())
+					  .cursor('now')
+					  .stream({
+					    onmessage: function (message) {
+					      console.log("Subscription Message", message);
+					      dispatch(refreshAccount(pair.publicKey()))
+					    }
+					  })	
+				})
 				.catch(_ => {
 					// Sometimes friendbot fails the first time so lets retry once
 					if (retry) {
