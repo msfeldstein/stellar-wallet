@@ -6,7 +6,6 @@ const accountState = (state = {
 	address: null,
 	data: {} }, action) =>
 {
-	console.log("ACTION", action)
 	switch (action.type) {
 		case LOAD_ACCOUNT:
 			const status = action.pair ? 'unlocked' : 'loaded'

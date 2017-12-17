@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { sendPayment } from '../actions'
-import { transactionChanged } from '../actions/sendPayment'
 import { TRANSACTION_BEGIN, TRANSACTION_FINISH, TRANSACTION_FAIL, TRANSACTION_CHANGED } from '../actionTypes'
 import InlineLoadingSpinner from './InlineLoadingSpinner'
 

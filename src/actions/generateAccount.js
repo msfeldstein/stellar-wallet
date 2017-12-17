@@ -19,6 +19,11 @@ export function refreshAccount(address) {
 }
 
 export function setKeypair(pair) {
+	console.error("Should not be storing account in localStorage, but for development this is easier")
+	localStorage.setItem('account', JSON.stringify({
+      publicKey: pair.publicKey(),
+      secret: pair.secret()
+    }, null, 2))
 	return function(dispatch) {
 		dispatch({
 			type: LOAD_ACCOUNT,
