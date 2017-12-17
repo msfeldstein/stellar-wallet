@@ -23,10 +23,7 @@ class AddressForm extends Component {
     return (
       <div className="AddressForm">
         <form onSubmit={this.handleSubmit}>
-          <label>
-          <h4>Enter a stellar address or transaction ID</h4>
-          <input className="lookup-field" placeholder="Stellar Address or transaction" type="text" value={this.state.address} onChange={this.handleAddressChange}/>
-          </label>
+          <input className="lookup-field" placeholder="Stellar address or transaction" type="text" value={this.state.address} onChange={this.handleAddressChange}/>
         </form>
       </div>
     );

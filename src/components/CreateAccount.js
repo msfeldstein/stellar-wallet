@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {generateAccount, setKeypair, refreshAccount } from '../actions'
+import { generateAccount, setKeypair, refreshAccount } from '../actions'
 import AddressDisplay from './AddressDisplay'
 import { StellarSdk } from '../stellar'
 
-import './style/account.css'
+import './style/Account.css'
 
 
-class CreateAccountComponent extends Component {
+class CreateAccount extends Component {
   constructor() {
     super()
     this.state = {}
@@ -93,4 +93,4 @@ let mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);

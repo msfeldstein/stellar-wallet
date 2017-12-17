@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import QueryComponent from './QueryComponent'
-import CreateAccountComponent from './CreateAccountComponent'
-import CreateTransactionComponent from './CreateTransactionComponent'
+import NetworkExplorer from './NetworkExplorer'
+import CreateAccount from './CreateAccount'
+import CreateTransaction from './CreateTransaction'
 import {Route, Switch} from 'react-router'
 
 class Main extends Component {
@@ -14,10 +14,10 @@ class Main extends Component {
   render() {
     return (
     	<Switch>
-  			<Route exact path="/" component={QueryComponent}/>
-  			<Route path="/query" component={QueryComponent} />
-        <Route exact path="/create-transaction" component={CreateTransactionComponent}/>
-  			<Route exact path="/create-account" component={CreateAccountComponent}/>
+  			<Route exact path="/" component={NetworkExplorer}/>
+  			<Route path="/query" component={NetworkExplorer} />
+        <Route exact path="/create-transaction" component={CreateTransaction}/>
+  			<Route exact path="/create-account" component={CreateAccount}/>
 		</Switch>
     );
   }

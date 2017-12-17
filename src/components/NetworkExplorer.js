@@ -4,7 +4,7 @@ import AddressDetails from './AddressDetails'
 import TransactionDetails from './TransactionDetails'
 import {Route} from 'react-router'
 
-class QueryComponent extends Component {
+class NetworkExplorer extends Component {
   constructor() {
     super()
     this.state = {
@@ -36,4 +36,4 @@ class QueryComponent extends Component {
   }
 }
 
-export default QueryComponent;
+export default NetworkExplorer;

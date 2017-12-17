@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import QRCodeComponent from './QRCodeComponent'
+import QRCode from './QRCode'
 import PropTypes from 'prop-types';
 import './style/AddressDisplay.css'
 
@@ -22,7 +22,7 @@ class AddressDisplay extends Component {
  		return (
  			<div className={`AddressDisplay ${privateClass}`}>
  				<div className="AddressDisplayTitle">{this.props.title}</div>
-    			<QRCodeComponent data={this.props.address} />
+    			<QRCode data={this.props.address} />
     			<div className="AddressDisplayAddress">
     				{this.props.address}
     			</div>

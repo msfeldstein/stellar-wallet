@@ -3,7 +3,7 @@ import FileDrop from 'react-file-drop'
 import { StellarSdk } from '../stellar'
 import { connect } from 'react-redux'
 import {generateAccount, setKeypair, refreshAccount } from '../actions'
-import './style/FileDropper.css'
+import './style/KeyFileDropper.css'
 
 class KeyFileDropper extends Component {
   handleFileDrop(files, e) {
