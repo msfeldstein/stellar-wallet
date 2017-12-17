@@ -25,7 +25,6 @@ ReactDOM.render(
 
 let account = JSON.parse(localStorage.getItem('account'))
 if (account) {
-	console.log(account)
 	const pair = StellarSdk.Keypair.fromSecret(account.secret)
 	store.dispatch(setKeypair(pair)) 
 	store.dispatch(refreshAccount(pair.publicKey()))
