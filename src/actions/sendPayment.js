@@ -1,5 +1,5 @@
 import server, { StellarSdk } from '../stellar'
-import {TRANSACTION_BEGIN, TRANSACTION_FINISH, TRANSACTION_FAIL} from '../actionTypes'
+import {TRANSACTION_BEGIN, TRANSACTION_FINISH, TRANSACTION_FAIL, TRANSACTION_CHANGED} from '../actionTypes'
 
 function sendPayment(keypair, accountData, destination, amount) {
 	return function(dispatch) {
@@ -27,9 +27,15 @@ function sendPayment(keypair, accountData, destination, amount) {
       dispatch({
         type: TRANSACTION_FAIL
       })
-      console.err("Transaciton failed",err)
+      console.error("Transaciton failed",err)
     })
 	}
+}
+
+export function transactionChanged() {
+  return {
+    type: TRANSACTION_CHANGED
+  }
 }
 
 export default sendPayment

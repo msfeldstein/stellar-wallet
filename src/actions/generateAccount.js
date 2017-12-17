@@ -19,10 +19,22 @@ export function refreshAccount(address) {
 }
 
 export function setKeypair(pair) {
-	return {
-		type: LOAD_ACCOUNT,
-		pair
+	return function(dispatch) {
+		dispatch({
+			type: LOAD_ACCOUNT,
+			pair
+		})
+		server.transactions()
+	    .forAccount(pair.publicKey())
+		  .cursor('now')
+		  .stream({
+		    onmessage: function (message) {
+		      console.log(message);
+		      dispatch(refreshAccount(pair.publicKey()))
+		    }
+		  })	
 	}
+	
 }
 
 export function generateAccount() {

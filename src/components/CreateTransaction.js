@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { sendPayment } from '../actions'
+import { transactionChanged } from '../actions/sendPayment'
 import { TRANSACTION_BEGIN, TRANSACTION_FINISH, TRANSACTION_FAIL, TRANSACTION_CHANGED } from '../actionTypes'
 import InlineLoadingSpinner from './InlineLoadingSpinner'
 
@@ -46,7 +47,11 @@ class CreateTransactionComponent extends Component {
             placeholder="Amount"
             type="number"
             value={this.state.amount}
-            onChange={e => this.setState({amount: e.target.value})}
+            onChange={e => {
+                this.props.changeTransaction()
+                this.setState({amount: e.target.value})
+              }
+            }
             />
         	XLM To
         	<input
@@ -54,7 +59,11 @@ class CreateTransactionComponent extends Component {
             placeholder="Destination"
             type="text"
             value={this.state.destination}
-            onChange={e => this.setState({destination: e.target.value})}
+            onChange={e => {
+                this.props.changeTransaction()
+                this.setState({destination: e.target.value})
+              }
+            }
             />
           {this.submitButton()}
         </form>
