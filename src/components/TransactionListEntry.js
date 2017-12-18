@@ -11,7 +11,6 @@ class TransactionListEntry extends Component {
   componentDidMount() {
     this.props.transaction.operations()
     .then(o => {
-      console.log("Operations", o, this.props.transaction)
       this.setState({
         operations: o._embedded.records
       })

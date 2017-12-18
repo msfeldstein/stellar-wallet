@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import AccountHeaderDetails from './AccountHeaderDetails'
+import Tooltip from 'react-simple-tooltip'
 
 class AccountLockStatus extends Component {
   constructor() {
@@ -26,7 +27,12 @@ class AccountLockStatus extends Component {
   	}
   	if (this.props.status === 'unlocked') {
       const shortname = this.state.expand ? this.props.address : this.props.address.substring(50, 56)
-      const link = <Link to={`/query/address/${this.props.address}`}>{shortname}</Link>
+      const link = (
+        <Tooltip content={this.props.address}>
+          <Link to={`/query/address/${this.props.address}`}>{shortname}</Link>
+        </Tooltip>
+      )
+      
   		message = (
         <span>
           Account 

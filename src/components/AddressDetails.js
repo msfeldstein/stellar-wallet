@@ -16,7 +16,7 @@ class AddressDetails extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.address != this.props.match.params.address) {
+    if (this.state.address !== this.props.match.params.address) {
       this.setState({
         address: this.props.match.params.address
       })

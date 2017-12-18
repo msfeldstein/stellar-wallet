@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Tooltip from 'react-simple-tooltip'
 
 class TransactionListEntry extends Component {
   render() {
     const op = this.props.operation
     const style = {
       margin: 8,
-      background: 'white'
+      background: 'white',
+      width: 400
     }
 
     const info = []
     info.push(['ID', op.id])
     info.push(['Type', op.type])
-    info.push(['Source', <Link to={`/query/address/${op.source_account}`}>{op.source_account}</Link>])
+    info.push(['Source', (
+        <Tooltip content={op.source_account}>
+         <Link to={`/query/address/${op.source_account}`}>...{op.source_account.substring(50, 56)}</Link>
+        </Tooltip>
+      )])
     if (op.type === 'payment') {
-      info.push(['Destination', <Link to={`/query/address/${op.to}`}>{op.to}</Link>])
+      info.push(['Destination', (
+        <Tooltip content={op.to}>
+          <Link to={`/query/address/${op.to}`}>...{op.to.substring(50, 56)}</Link>
+        </Tooltip>
+      )])
       info.push(['Amount', op.amount])
     }
     return (
@@ -24,7 +34,7 @@ class TransactionListEntry extends Component {
             {
               info.map(i => {
                 return (
-                  <tr>
+                  <tr key={i[0]}>
                     <td>
                       {i[0]}
                     </td>
