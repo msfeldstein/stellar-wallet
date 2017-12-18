@@ -11,3 +11,22 @@
 .transactionForm .amountField {
 	width: 80px;
 }
+
+.operationListEntry {
+	border-collapse: collapse;
+	width: 100%;
+}
+.operationListEntry tr {
+	border-bottom: 1px solid #ddd;
+	box-sizing: border-box;
+}
+
+
+.operationListEntry tr:last-child {
+	width: 100px;
+	border-bottom: 1px solid transparent;
+}
+
+.operationListEntry tr td:first-child {
+	width: 100px;
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import server from '../stellar'
 import Spinner from 'react-spinkit'
 import AddressBalances from './AddressBalances'
 import AddressDisplay from './AddressDisplay'
+import AddressTransactionList from './AddressTransactionList'
 import { fetchAccountData } from '../actions/accountData'
 import { connect } from 'react-redux'
 
@@ -14,6 +14,16 @@ class AddressDetails extends Component {
       address: null
     }
   }
+
+  componentDidUpdate() {
+    if (this.state.address != this.props.match.params.address) {
+      this.setState({
+        address: this.props.match.params.address
+      })
+      this.props.fetchAccountData(this.props.match.params.address)  
+    }
+  }
+
   componentDidMount() {
     this.setState({
       address: this.props.match.params.address
@@ -38,16 +48,20 @@ class AddressDetails extends Component {
       )
     }
 
-    const addressCardStyles = {
-        float: 'left'
-      }
-
+    const style = {
+      display: 'flex',
+      flexDirection: 'row',
+      textAlign: 'left'
+    }
     return (
-      <div className="AddressDetails">
-        <div style={addressCardStyles}>
+      <div className="AddressDetails" style={style}>
+        <div>
           <AddressDisplay address={this.props.match.params.address} title="Address" />
         </div>
-        <AddressBalances balances={addressData.data.balances} />
+        <div>
+          <AddressBalances balances={addressData.data.balances} />
+          <AddressTransactionList transactions={addressData.transactions} />
+        </div>
       </div>
     );
   }

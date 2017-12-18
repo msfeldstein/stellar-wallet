@@ -17,14 +17,30 @@ function receiveAccountData(account, data) {
 	}
 }
 
+export const RECEIVE_ACCOUNT_TRANSACTIONS = 'RECEIVE_ACCOUNT_TRANSACTIONS'
+function receiveAccountTransactions(account, transactions) {
+	return {
+		type: RECEIVE_ACCOUNT_TRANSACTIONS,
+		account,
+		transactions
+	}
+}
+
 export function fetchAccountData(account) {
 	return function(dispatch) {
 		dispatch(requestAccountData(account))
 
 		server.loadAccount(account)
 		.then(resp => {
-			console.log("GOT ACCOUNT DATA", account, resp)
 			dispatch(receiveAccountData(account, resp))
 		})
+
+		server.transactions()
+    	.forAccount(account)
+    	.order('desc')
+    	.call()
+    	.then(resp => {
+    		dispatch(receiveAccountTransactions(account, resp.records))
+    	});
 	}
 }
