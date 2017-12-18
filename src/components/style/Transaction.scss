@@ -1,3 +1,5 @@
+@import './Colors.scss';
+
 .transactionForm input[type=text], .transactionForm input[type=number] {
 	border: 0;
 	border-bottom: 1px solid #004040;
@@ -29,4 +31,12 @@
 
 .operationListEntry tr td:first-child {
 	width: 100px;
+}
+
+.incoming-payment {
+	color: $TEAL;
+}
+
+.outgoing-payment {
+	color: $SALMON;
 }

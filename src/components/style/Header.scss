@@ -6,19 +6,15 @@
   color: white;
 }
 
+.App-header a {
+  color: white;
+  text-decoration: none;
+}
+
+
 .MainLogo {
   width: 128px;
   height: 128px;
-}
-
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .sections {
@@ -42,11 +38,6 @@
 
 .sections .section:hover {
   background: #444;
-}
-
-.App-header a {
-  color: white;
-  text-decoration: none;
 }
 
 .AccountLockedStatus.unlocked {
