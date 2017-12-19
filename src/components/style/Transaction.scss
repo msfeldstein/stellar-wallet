@@ -1,13 +1,52 @@
 @import './Colors.scss';
 
-.transactionForm input[type=text], .transactionForm input[type=number] {
+.transaction-form {
+	font-size: 30px;
+	width: 300px;
+	margin: auto;
+}
+
+.transaction-form-field-container {
+	width: 100%;
+}
+
+.transaction-form input[type=text], .transaction-form input[type=number] {
 	border: 0;
 	border-bottom: 1px solid #004040;
-	font-size: 16px;
 	outline: transparent;
 	text-align: center;
-	margin: 6px;
+	margin: auto;
+	margin-top: 8px;
+	height: 30px;
+	font-size: 30px;
 	background: transparent;
+	margin-bottom: 32px;
+	display: block;
+
+}
+
+.transaction-form label {
+	float: left;
+	font-size: 16px;
+	display: none;
+}
+
+.transaction-form .submit-button {
+	width: 100%;
+	background: #FAFAFA;
+	border: 0;
+	height: 38px;
+	font-size: 16px;
+}
+
+.transaction-form .submit-button.invalid {
+	cursor: not-allowed;
+}
+
+.transaction-form .submit-button.valid {
+	cursor: pointer;
+	background: $TEAL;
+	color: white;
 }
 
 .transactionForm .amountField {

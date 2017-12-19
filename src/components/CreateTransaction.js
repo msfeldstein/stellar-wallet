@@ -9,7 +9,8 @@ class CreateTransactionComponent extends Component {
     super()
     this.state = {
       amount: "",
-      destination: ""
+      destination: "",
+      memo: ""
     }
   }
   submit(e) {
@@ -23,9 +24,21 @@ class CreateTransactionComponent extends Component {
     this.props.sendPayment(this.props.keyPair, this.props.accountData, destination, value)
   }
 
+  invalidTransactionWarning() {
+    console.log("A", parseFloat(this.state.amount))
+    if (this.state.destination.length !== 56) {
+      return "Invalid address"
+    }
+    if (parseFloat(this.state.amount) <= 0 || isNaN(parseFloat(this.state.amount))) {
+      return "Invalid amount"
+    }
+    return null
+  }
+
   submitButton() {
+    const buttonClassName = this.invalidTransactionWarning() ? 'invalid' : 'valid'
     return {
-      [TRANSACTION_CHANGED]: <input type="submit" value="Send"/>,
+      [TRANSACTION_CHANGED]: <input type="submit" value="Send" className={`submit-button ${buttonClassName}`} />,
       [TRANSACTION_BEGIN]: <InlineLoadingSpinner />,
       [TRANSACTION_FINISH]: "Success!",
       [TRANSACTION_FAIL]: "Failure :("
@@ -37,33 +50,57 @@ class CreateTransactionComponent extends Component {
       <div>
         <h2>Create a new transaction</h2>
         <form
-          className="transactionForm"
+          className="transaction-form"
           ref={f => this.form = f}
           onSubmit={this.submit.bind(this)}>
-        	Send 
-        	<input
-            className="amountField"
-            placeholder="Amount"
-            type="number"
-            value={this.state.amount}
-            onChange={e => {
-                this.props.changeTransaction()
-                this.setState({amount: e.target.value})
+          <div className="transaction-form-field-container">
+          	<label>
+              Send
+            </label>
+          	<input
+              className="amountField"
+              placeholder="Amount"
+              type="number"
+              value={this.state.amount}
+              onChange={e => {
+                  this.props.changeTransaction()
+                  this.setState({amount: e.target.value})
+                }
               }
-            }
-            />
-        	XLM To
-        	<input
-            className="destinationField"
-            placeholder="Destination"
-            type="text"
-            value={this.state.destination}
-            onChange={e => {
-                this.props.changeTransaction()
-                this.setState({destination: e.target.value})
+              />
+          </div>
+          <div className="transaction-form-field-container">
+          	<label>
+              To
+            </label>
+          	<input
+              className="destinationField"
+              placeholder="Destination"
+              type="text"
+              value={this.state.destination}
+              onChange={e => {
+                  this.props.changeTransaction()
+                  this.setState({destination: e.target.value})
+                }
               }
-            }
-            />
+              />
+          </div>
+          <div className="transaction-form-field-container">
+            <label>
+              With memo
+            </label>
+            <input
+              className="memo-field"
+              placeholder="Memo (Optional)"
+              type="text"
+              value={this.state.memo}
+              onChange={e => {
+                  this.props.changeTransaction()
+                  this.setState({memo: e.target.value})
+                }
+              }
+              />
+            </div>
           {this.submitButton()}
         </form>
       </div>
