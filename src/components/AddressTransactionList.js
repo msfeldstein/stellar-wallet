@@ -7,7 +7,7 @@ class AddressTransactionList extends Component {
     let transactions = <Spinner name="cube-grid" />
     if (this.props.transactions) {
       transactions = this.props.transactions.map((t) => {
-        return <TransactionListEntry key={t.id} transaction={t} />
+        return <TransactionListEntry ownerAccount={this.props.ownerAccount} key={t.id} transaction={t} />
       })
     }
 
@@ -17,7 +17,6 @@ class AddressTransactionList extends Component {
     }
     return (
       <div className="AddressTransactionList" style={wrapperStyles}>
-        <h3>Transactions</h3>
         {transactions}
       </div>
     );

@@ -5,7 +5,7 @@ class QRCodeComponent extends Component {
   render() {
   	if (!this.props.data) return null
     return (
-      <canvas ref={c => c && QRCode.toCanvas(c, this.props.data, (e) => {if (e) console.error(e)})} />
+      <canvas ref={c => c && QRCode.toCanvas(c, this.props.data, this.props.options, (e) => {if (e) console.error(e)})} />
     )
   }
 }

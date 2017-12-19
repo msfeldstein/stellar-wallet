@@ -1,0 +1,36 @@
+.operation-list-entry {
+	margin-bottom: 12px;
+}
+
+.operation-header {
+	color: #A1A1A1;
+	background: #E3E3E3;
+	padding: 8px;
+}
+
+.operation-date {
+	float: right;
+
+}
+
+.operation-content {
+	padding: 8px;
+}
+
+.operation-payment-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.operation-payment-row > * {
+	flex-grow: 1;
+	flex-basis: 0;
+}
+
+.operation-payment-row-addres-destination {
+	text-align: right;
+}
+
+.operation-payment-row-spend-arrow {
+	text-align: center;
+}

@@ -8,7 +8,7 @@ class AccountHeaderDetails extends Component {
   render() {
     if (this.props.status !== 'unlocked') return null
     const balance = this.props.balance ? 
-      <NumberFormat value={this.props.balance} displayType="text" decimalScale={3} thousandSeparator={true} />
+      <NumberFormat value={this.props.balance} displayType="text" thousandSeparator={true} />
       : <InlineLoadingSpinner />
     
     return (

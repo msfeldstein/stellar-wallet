@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from 'react-spinkit'
-import AddressBalances from './AddressBalances'
-import AddressDisplay from './AddressDisplay'
+import AccountDetailsCard from './AccountDetailsCard'
 import AddressTransactionList from './AddressTransactionList'
 import { fetchAccountData } from '../actions/accountData'
 import { connect } from 'react-redux'
@@ -53,14 +52,14 @@ class AddressDetails extends Component {
       flexDirection: 'row',
       textAlign: 'left'
     }
+
     return (
       <div className="AddressDetails" style={style}>
-        <div>
-          <AddressDisplay address={this.props.match.params.address} title="Address" />
+        <div className="address-details-sidebar">
+          <AccountDetailsCard info={addressData.data} />
         </div>
-        <div>
-          <AddressBalances balances={addressData.data.balances} />
-          <AddressTransactionList transactions={addressData.transactions} />
+        <div className="address-details-content">
+          <AddressTransactionList ownerAccount={this.props.match.params.address} transactions={addressData.transactions} />
         </div>
       </div>
     );

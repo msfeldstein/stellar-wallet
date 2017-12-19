@@ -9,6 +9,7 @@ class TransactionListEntry extends Component {
     }
   }
   componentDidMount() {
+    console.log(this.props.transaction)
     this.props.transaction.operations()
     .then(o => {
       this.setState({
@@ -19,7 +20,7 @@ class TransactionListEntry extends Component {
   render() {
     window.transaction = this.props.transaction
     return this.state.operations.map(o => {
-      return <OperationListEntry key={o.id} operation={o} />
+      return <OperationListEntry ownerAccount={this.props.ownerAccount} key={o.id} operation={o} />
     })
   }
 }
