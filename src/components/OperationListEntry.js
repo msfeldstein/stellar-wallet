@@ -27,9 +27,10 @@ class TransactionListEntry extends Component {
   }
 
   amountForOp(op) {
+    console.log(op)
     let sign = op.source_account === this.props.ownerAccount ? '-' : '+'
     let amount = <NumberFormat value={op.amount} displayType="text" decimalScale={3} thousandSeparator={true} />
-    return <span className={this.classNameForOp(op)}>{sign}{amount} {assetTypeToTicker(op.asset_type)}</span>
+    return <span className={this.classNameForOp(op)}>{sign}{amount} {assetTypeToTicker(op)}</span>
   }
 
   paymentRowForOp(op) {

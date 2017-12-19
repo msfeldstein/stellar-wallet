@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import NumberFormat from 'react-number-format';
 
 class AddressBalances extends Component {
+  balanceToAssetTypeLabel(balance) {
+    if (balance.asset_type === 'native') return 'xlm'
+    return balance.asset_code
+  }
   render() {
     const balances = this.props.balances.map((balance) => {
+      console.log(balance)
       return <div key={balance.asset_type}>
-        <b>{balance.asset_type}: </b>
+        <b>{this.balanceToAssetTypeLabel(balance)}: </b>
         <NumberFormat
           value={balance.balance}
           displayType={'text'}

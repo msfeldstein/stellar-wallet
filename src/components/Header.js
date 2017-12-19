@@ -22,6 +22,9 @@ class Header extends Component {
           <div className="section">
             <Link to="/query">Network Explorer</Link>
           </div>
+          <div className="section">
+            <Link to="/assets">Assets</Link>
+          </div>
         </div>
         <AccountLockStatus />
       </header>
