@@ -1,11 +1,12 @@
 .AddressDisplayRow {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 }
 
 .AddressDisplay.card {
-	width: 220px;
+	width: 100%;
+	box-sizing: border-box;
 	height: 280px;
 	padding: 16px;
 	font-family: monospace;
@@ -20,7 +21,6 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: 16px;
 }
 
 .AddressDisplay.isPrivate {
@@ -51,4 +51,16 @@
 	background: white;
 	padding: 16px;
 	margin-bottom: 16px;
+}
+
+
+@media (min-width: 400px) {
+	.AddressDisplay.card {
+		width: 250px;
+		margin: 8px;
+	}
+
+	.AddressDisplayRow {
+		flex-direction: row;
+	}
 }

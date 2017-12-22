@@ -4,6 +4,8 @@ import { generateAccount, setKeypair, refreshAccount } from '../actions'
 import AddressDisplay from './AddressDisplay'
 import { StellarSdk } from '../stellar'
 
+import './style/CreateAccount.css'
+
 class CreateAccount extends Component {
   constructor() {
     super()
@@ -58,23 +60,12 @@ class CreateAccount extends Component {
     )
   }
 
-  buttonStyle() {
-    return {
-      margin: 8,
-      border: 0,
-      background: 'white',
-      padding: 8,
-      fontSize: "1.1em",
-      cursor: 'pointer'
-    }
-  }
-
   render() {
     return (
       <div>
         <h2>Manage your account</h2>
-        <button className="card" style={this.buttonStyle()} onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
-        <button className="card" style={this.buttonStyle()} onClick={this.load.bind(this)}>Load an account <span role="img" aria-label="disk">💾</span></button>
+        <button className="card account-management-button" onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
+        <button className="card account-management-button" onClick={this.load.bind(this)}>Load an account <span role="img" aria-label="disk">💾</span></button>
         {this.keyDetails()}
       </div>
     );
