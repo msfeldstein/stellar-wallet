@@ -20,7 +20,7 @@ class AddressDisplay extends Component {
  	visibleDisplay() {
  		const privateClass = this.props.isPrivate ? 'isPrivate' : ''
  		return (
- 			<div className={`AddressDisplay ${privateClass}`}>
+ 			<div className={`card AddressDisplay ${privateClass}`}>
  				<div className="AddressDisplayTitle">{this.props.title}</div>
     			<QRCode data={this.props.address} />
     			<div className="AddressDisplayAddress">
@@ -32,7 +32,7 @@ class AddressDisplay extends Component {
 
  	hiddenDisplay() {
  		return (
- 			<div className="AddressDisplay isPrivate">
+ 			<div className="card AddressDisplay isPrivate">
  				<div className="PrivateKeyWarning">This is a private key. Keep this safe and do not let anyone else see this</div>
     			<button onClick={this.show.bind(this)}>Show</button>
     		</div>

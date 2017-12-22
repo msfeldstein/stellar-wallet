@@ -4,8 +4,7 @@
 	justify-content: center;
 }
 
-.AddressDisplay {
-	background: white;
+.AddressDisplay.card {
 	width: 220px;
 	height: 280px;
 	padding: 16px;
@@ -52,29 +51,4 @@
 	background: white;
 	padding: 16px;
 	margin-bottom: 16px;
-}
-
-.address-details-sidebar {
-	flex-grow: 0;
-}
-
-.address-details-content {
-	flex-grow: 1;
-}
-
-.address-details-card {
-	width: 220px;
-	word-wrap: break-word;
-	margin: 16px;
-	padding: 16px;
-	font-family: monospace;
-}
-
-.address-details-card-address {
-	text-align: center;
-}
-
-.address-details-card-qrcode {
-	text-align: center;
-	margin: 16px;
 }

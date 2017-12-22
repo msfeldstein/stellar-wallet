@@ -11,12 +11,8 @@ class AddressTransactionList extends Component {
       })
     }
 
-    const wrapperStyles = {
-      textAlign: 'left',
-      padding: 16
-    }
     return (
-      <div className="AddressTransactionList" style={wrapperStyles}>
+      <div className="address-transaction-list">
         {transactions}
       </div>
     );

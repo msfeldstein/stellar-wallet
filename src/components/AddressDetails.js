@@ -5,6 +5,8 @@ import AddressTransactionList from './AddressTransactionList'
 import { fetchAccountData } from '../actions/accountData'
 import { connect } from 'react-redux'
 
+import './style/AddressDetails.css'
+
 class AddressDetails extends Component {
   constructor() {
     super()
@@ -33,7 +35,7 @@ class AddressDetails extends Component {
     const addressData = this.props.accountData[this.state.address]
     if (!addressData || addressData.isFetching) {
       return (
-        <div className="AddressDetails">
+        <div className="address-detail">
           <Spinner name="cube-grid"/>
         </div>
       )
@@ -47,14 +49,10 @@ class AddressDetails extends Component {
       )
     }
 
-    const style = {
-      display: 'flex',
-      flexDirection: 'row',
-      textAlign: 'left'
-    }
+
 
     return (
-      <div className="AddressDetails" style={style}>
+      <div className="address-details">
         <div className="address-details-sidebar">
           <AccountDetailsCard info={addressData.data} />
         </div>

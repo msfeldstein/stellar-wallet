@@ -1,0 +1,48 @@
+.address-details {
+	display: flex;
+ 	flex-direction: column;
+ 	text-align: left;
+ 	margin-top: 60px;
+ 	text-align: center;
+  	width: 100%;
+  	padding: 16px;
+  	box-sizing: border-box;
+}
+
+.address-details-sidebar {
+	flex-grow: 0;
+}
+
+.address-details-content {
+	flex-grow: 1;
+}
+
+.address-details-card {
+	word-wrap: break-word;
+	padding: 16px;
+	font-family: monospace;
+}
+
+.address-details-card-address {
+	text-align: center;
+}
+
+.address-details-card-qrcode {
+	text-align: center;
+}
+
+@media (min-width: 400px) {
+  	.address-details {
+ 		flex-direction: row;
+	}
+
+	.address-details-card {
+		width: 230px;
+	}
+
+	.address-details-content {
+		margin-left: 16px;
+	}
+
+
+}

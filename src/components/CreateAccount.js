@@ -73,8 +73,8 @@ class CreateAccount extends Component {
     return (
       <div>
         <h2>Manage your account</h2>
-        <button style={this.buttonStyle()} onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
-        <button style={this.buttonStyle()} onClick={this.load.bind(this)}>Load an account <span role="img" aria-label="disk">💾</span></button>
+        <button className="card" style={this.buttonStyle()} onClick={this.create.bind(this)}>Create a fresh account <span role="img" aria-label="dice">🎲</span></button>
+        <button className="card" style={this.buttonStyle()} onClick={this.load.bind(this)}>Load an account <span role="img" aria-label="disk">💾</span></button>
         {this.keyDetails()}
       </div>
     );
