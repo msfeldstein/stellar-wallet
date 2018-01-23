@@ -25,7 +25,6 @@ class CreateTransactionComponent extends Component {
   }
 
   invalidTransactionWarning() {
-    console.log("A", parseFloat(this.state.amount))
     if (this.state.destination.length !== 56) {
       return "Invalid address"
     }

@@ -9,7 +9,6 @@ class TransactionListEntry extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props.transaction)
     this.props.transaction.operations()
     .then(o => {
       this.setState({

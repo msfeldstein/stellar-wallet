@@ -3,7 +3,6 @@ import NumberFormat from 'react-number-format';
 
 class PaymentDetails extends Component {
   render() {
-    console.log(this.props.details, "DETIALS")
     const det = this.props.details
     return (
       <div>

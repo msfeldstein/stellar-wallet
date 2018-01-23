@@ -8,7 +8,6 @@ class AddressBalances extends Component {
   }
   render() {
     const balances = this.props.balances.map((balance) => {
-      console.log(balance)
       return <div key={balance.asset_type}>
         <b>{this.balanceToAssetTypeLabel(balance)}: </b>
         <NumberFormat

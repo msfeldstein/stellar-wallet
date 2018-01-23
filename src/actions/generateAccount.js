@@ -29,13 +29,11 @@ export function setKeypair(pair) {
 			type: LOAD_ACCOUNT,
 			pair
 		})
-		console.log("Subscribing for account ", pair.publicKey())
 		server.transactions()
 	    .forAccount(pair.publicKey())
 		.cursor('now')
 		.stream({
 			onmessage: function (message) {
-		    	console.log("Subscription Message", message);
 		    	dispatch(refreshAccount(pair.publicKey()))
 			}
 		})	
@@ -53,13 +51,11 @@ export function generateAccount() {
 				.call()
 				.then(_ => {
 					dispatch(refreshAccount(pair.publicKey()))
-					console.log("Subscribing for account ", pair.publicKey())
 					server.transactions()
 				    .forAccount(pair.publicKey())
 					.cursor('now')
 					.stream({
 						onmessage: function (message) {
-							console.log("Subscription Message", message);
 							dispatch(refreshAccount(pair.publicKey()))
 						}
 					})	
